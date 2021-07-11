@@ -162,12 +162,28 @@ namespace SuperPaint
 
                 case ConsoleKey.T: // Escreve Texto
                     {
+
+                        Menu.informador(5);
                         int a_cx = Console.CursorLeft;
                         int a_cy = Console.CursorTop;
                         Console.BackgroundColor = Desenho.canetaCorFundo;
                         Console.ForegroundColor = Desenho.canetaCorFrente;
+                        
 
-                        string s = Console.ReadLine();
+                        int distancaDaBorda = (Console.WindowWidth) - a_cx;
+                        string texto = string.Empty;
+                        while (true)
+                        {
+                            char c = Console.ReadKey(true).KeyChar;
+                            if (c == '\r') { Menu.informador(1); break; }
+                            if (c == '\b') {
+                                if (texto != "") { texto = texto[0..^1]; Console.Write("\b \b"); }
+                            }
+                            else if (texto.Length < distancaDaBorda) {
+                                Console.Write(c); texto += c;
+                            }
+                        }
+
                         Console.SetCursorPosition(a_cx, a_cy);
                         break;
                     }
@@ -302,6 +318,12 @@ namespace SuperPaint
                 case ConsoleKey.D:
                     {
                         if (modo_Desenho) { modo_Desenho = false; Menu.informador(1); } else { Menu.informador(4); modo_Desenho = true; Desenho.desenhaPonto(); }
+                        break;
+                    }
+
+                case ConsoleKey.E:
+                    {
+                        Desenho.desenhaPonto(); 
                         break;
                     }
 

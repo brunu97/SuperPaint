@@ -15,7 +15,8 @@ namespace SuperPaint
             {1, "Caneta"},
             {2, "Retangulo" },
             {3, "Linha" },
-            {4, "Caneta contínua" }
+            {4, "Caneta contínua" },
+            {5, "Texto" }
         };
 
         public static void criarMenu()
@@ -147,6 +148,7 @@ namespace SuperPaint
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("<> " + modos[modo]);
             Console.SetCursorPosition(a_cx, a_cy);
+
         }
 
         public static void tamanhoSeletor(int tamanho)

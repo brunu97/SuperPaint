@@ -12,7 +12,7 @@ namespace SuperPaint
         static void Main(string[] args)
         {
 
-
+            Console.Title = "SuperPaint";
             Menu.criarMenu();
             Utilizador user = new Utilizador();
             Desenho.chr = '#';
